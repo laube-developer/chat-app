@@ -1,15 +1,17 @@
 .container {
-  padding: 0 2rem;
+  background: #E6E9ED;
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-image: url("/favicon.svg");
+  background-repeat: no-repeat;
+  background-position: -150vh -146vh;
+  background-size: 150rem;
 }
 
 .footer {
@@ -126,4 +128,109 @@
   .logo img {
     filter: invert(1);
   }
+}
+
+.content{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 4rem;
+  align-items: center;
+}
+
+.mockup{
+  width: 50vw;
+  padding: 0 3rem;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.main_box{
+  display: flex;
+  flex-direction: column;
+  width: 26rem;
+  background: white;
+  height: 80vh;
+  border-radius: 8px;
+  align-self: flex-start;
+  padding: 1rem 2.5rem;
+}
+
+.line{
+  width: 60%;
+  border: 1px solid #ccc;
+  background: #ccc;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.main_box h1{
+  color: #494949;
+  font-size: 1.5rem;
+}
+.blue_text{
+  color: rgb(26, 63, 228)
+}
+
+.main_box label{
+  color: #494949;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.main_box input{
+  height: 3rem;
+  margin: .5rem 0;
+  border-radius: 50vh;
+  border: none;
+  outline: none;
+  background: #E6E9ED;
+  text-indent: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: .5rem;
+  color: #494949;
+  font-weight: 500;
+}
+
+.bottom_box{
+  width: 100%;
+  height: 5rem;
+  margin-top: .8rem;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  font-size: 1.2rem;
+}
+
+.submit{
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 50vh;
+  border: none;
+  background: #154AB8;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:hover{
+  background: #0070f3;
+}
+
+.mockup_chat{
+  transform: scale(.6) translateY(-6rem) translateX(-3rem);
+}
+
+.mockup_celular{
+  transform: scale(.6) translateX(-35rem) translateY(3rem);
+}
+
+.mockup_chat, .mockup_celular{
+  border-radius: 2rem;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
 }

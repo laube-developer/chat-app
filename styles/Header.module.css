@@ -1,0 +1,29 @@
+.header{
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 4rem 20rem auto 20rem;
+    grid-template-rows: 3rem;
+    padding: 1.5rem 4rem;
+}
+
+.container{
+    background: rgb(44, 73, 238);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.img{
+    background-image: url("/favicon.svg");
+    width: 3rem;
+    height: 3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3467E1;
+}

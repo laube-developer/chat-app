@@ -1,0 +1,44 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+}
+.fill_btn,
+.outline_btn
+{
+    padding: 1rem 2rem;
+    height: 3rem;
+    border-radius: 50vh;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    justify-self: end;
+    border: none;
+} 
+.fill_btn{
+    color: rgb(26, 63, 228);
+    background: white;
+}
+.fill_btn:hover{
+    transform: scale(110%);
+    transition: ease-in-out all .5s;
+}
+.outline_btn:hover{
+    background: rgba(255, 255, 255, 0.062);
+}
+.outline_btn{
+    background: none;
+    border: 1px solid white;
+    color: white;
+}
+
+.user_img{
+    width: 3rem;
+    height: 3rem;
+    background: rgb(17, 98, 219);
+    display: flex;
+    border-radius: 50vh;
+    overflow: hidden;
+    cursor: pointer;
+}

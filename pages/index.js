@@ -10,6 +10,7 @@ export default function home(){
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.svg" />
+        <title>Cadastro</title>
       </Head>
       <div className={styles.main}>
         <Header title="Chat App"/>

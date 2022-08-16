@@ -1,0 +1,41 @@
+.contact{
+    display: grid;
+    grid-template-columns: 5rem auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1.5rem;
+    line-height: .3rem;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.contact:hover{
+    background: #E6E9ED;
+}
+
+.contact img{
+    width: 4rem;
+    border-radius: 50%;
+}
+
+.contact h3,
+.contact p{
+    color: black;
+}
+
+.contact h5{
+    color: #494949;
+}
+
+.contact p{
+    font-weight: 600;
+}
+
+.bottom{
+    display: grid;
+    grid-template-columns: auto 3rem;
+    border-bottom: 3px solid #ABABAB;
+    width: 100%;
+    padding: .8rem 0;
+    align-items: center;
+}

@@ -1,0 +1,26 @@
+.button{
+    height: 3rem;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    border-radius: 50vh;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    color: #494949;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+    cursor: pointer;
+    border: 4px solid white;
+}
+
+.button:hover{
+    background: #1248B5;
+    color: white;
+    border: 4px solid #093896;
+}
+
+.button svg{
+    font-size: 2rem;
+}

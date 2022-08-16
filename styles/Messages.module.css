@@ -1,0 +1,60 @@
+.left_message{
+    width: 100%;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 5rem auto 2rem;
+    gap: 1rem;
+}
+
+.head{
+    color: black;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: start  ;
+    font-weight: 600;
+}
+
+.head img{
+    width: 4rem;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.content{
+    background: #E6E9ED;
+    max-width: 35rem;
+    width: max-content;
+    padding: 0 3rem;
+    border-radius: 0 22px 22px 22px;
+    font-size: 1.3rem;
+    color: #494949;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right_message{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.right_message .content{
+    background: #1248B5;
+    color: white;
+    border-radius: 22px 0 22px 22px;
+    flex-direction: column;
+    padding: 1rem 3rem;
+}
+
+.right_message .content p{
+    line-height: .3rem;
+    width: 100%;
+    text-align: right;
+}
+
+.right_message .content p span{
+    font-weight: 600;
+    font-size: 1.1rem;
+}

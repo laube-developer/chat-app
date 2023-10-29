@@ -1,6 +1,6 @@
 .button{
     height: 3rem;
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 50vh;
     border: 2px solid rgba(0, 0, 0, 0.719);
     margin-top: 1rem;
@@ -10,11 +10,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 5rem;
+    gap: 1rem;
     cursor: pointer;
 }
 
 .button:hover{
     background: rgb(228, 228, 228);
     transition: ease-in-out all .2s;
+}
+
+.button svg{
+    font-size: 1.5rem;
 }

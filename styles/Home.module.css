@@ -3,11 +3,12 @@
 }
 
 .main {
-  min-height: 100vh;
   flex: 1;
   display: flex;
+  height: 100svh;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-image: url("/favicon.svg");
   background-repeat: no-repeat;
   background-position: -150vh -146vh;
@@ -110,13 +111,6 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
@@ -133,18 +127,54 @@
 .content{
   display: flex;
   width: 100%;
-  height: 100vh;
-  padding: 1rem 4rem;
+  padding: 1rem 1rem;
   align-items: center;
   justify-content: center;
 }
 
 .mockup{
-  width: 50vw;
-  padding: 0 3rem;
-  height: 80vh;
+  max-width: 40vw;
+  height: 70vh;
   display: flex;
   flex-direction: row;
+}
+
+.mockup img{
+  width: fit-content;
+  height: 100%;
+}
+
+.chamada{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 0 3rem;
+  gap: 1rem;
+}
+
+.legenda{
+  font-size: 10px;
+  width: 20rem;
+  margin: 0;
+  background: #ffffff89;
+  padding: 1rem;
+  border-radius: .5rem;
+  position: relative;
+}
+.legenda::after{
+  left: 10px;
+  bottom: -20px;
+  content: "";
+  display: block;
+  position: absolute;
+  border-top: 10px solid #ffffff89;
+  border-right: 10px solid rgba(255, 0, 0, 0);
+  border-bottom: 10px solid rgba(255, 0, 0, 0);
+  border-left: 10px solid rgba(255, 0, 0, 0);
+}
+
+.legenda h1{
+  margin: 0;
 }
 
 .main_box{
@@ -153,9 +183,14 @@
   overflow-y: scroll;
   max-height: calc(100vh - 2rem);
   width: 26rem;
+  max-width: calc(100vw - 2rem);
   background: white;
   border-radius: 8px;
   padding: 1rem 2.5rem;
+}
+
+.main_box img{
+  width: 2rem;
 }
 
 .line{
@@ -168,33 +203,14 @@
 
 .main_box h1{
   color: #494949;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   font-size: 1.5rem;
-  height: 1rem;
+  /* height: 1rem; */
 }
 .blue_text{
   color: rgb(26, 63, 228)
-}
-
-.main_box label{
-  color: #494949;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.main_box input{
-  height: 3rem;
-  min-height: 40px;
-  margin: .5rem 0;
-  border-radius: 50vh;
-  border: none;
-  outline: none;
-  background: #E6E9ED;
-  text-indent: 1rem;
-  font-size: 1.1rem;
-  text-align: center;
-  border-bottom: .5rem;
-  color: #494949;
-  font-weight: 500;
 }
 
 .bottom_box{
@@ -219,6 +235,7 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  color: white;
 }
 
 .submit:hover{
@@ -230,10 +247,61 @@
 }
 
 .mockup_celular{
-  transform: scale(.6) translateX(-35rem) translateY(3rem);
+  transform: scale(.6) translateX(-28rem) translateY(3rem);
 }
 
 .mockup_chat, .mockup_celular{
   border-radius: 2rem;
   box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+}
+
+.inputBox{
+  position: relative;
+}
+
+.inputBox label{
+  position: absolute;
+  top: 0;
+  margin-left: 1rem;
+  background: #638ee4;
+  color: #ffffff;
+  padding: 0 .5rem;
+  border-radius: 50vh;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.inputBox input{
+  width: 100%;
+  height: 3rem;
+  min-height: 40px;
+  margin: .5rem 0;
+  border-radius: 50vh;
+  border: none;
+  outline: none;
+  background: #E6E9ED;
+  text-indent: 1rem;
+  font-size: 1.1rem;
+  text-align: left;
+  border-bottom: .5rem;
+  color: #494949;
+  font-weight: 500;
+}
+
+@media (max-width: 980px){
+  .mockup{
+    display: none;
+  }
+  .content{
+    margin: 1rem !important;
+  }
+}
+
+@media (orientation: portrait){
+  .mockup{
+    display: none;
+  }
+  .content{
+    margin: 1rem !important;
+  }
 }

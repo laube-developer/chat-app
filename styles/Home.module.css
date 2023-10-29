@@ -1,6 +1,7 @@
 .container {
   background: #E6E9ED;
 }
+
 .main {
   min-height: 100vh;
   flex: 1;
@@ -132,9 +133,10 @@
 .content{
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 1rem 4rem;
   align-items: center;
+  justify-content: center;
 }
 
 .mockup{
@@ -148,11 +150,11 @@
 .main_box{
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  max-height: calc(100vh - 2rem);
   width: 26rem;
   background: white;
-  height: 80vh;
   border-radius: 8px;
-  align-self: flex-start;
   padding: 1rem 2.5rem;
 }
 
@@ -167,6 +169,7 @@
 .main_box h1{
   color: #494949;
   font-size: 1.5rem;
+  height: 1rem;
 }
 .blue_text{
   color: rgb(26, 63, 228)
@@ -180,6 +183,7 @@
 
 .main_box input{
   height: 3rem;
+  min-height: 40px;
   margin: .5rem 0;
   border-radius: 50vh;
   border: none;

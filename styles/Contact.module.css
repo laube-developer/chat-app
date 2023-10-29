@@ -1,20 +1,26 @@
 .contact{
     display: grid;
-    grid-template-columns: 5rem auto;
+    grid-template-columns: 3rem auto;
     gap: 1rem;
     align-items: center;
     padding: 0 1.5rem;
     line-height: .3rem;
-    border-radius: 22px;
     cursor: pointer;
+    border-top: 1px solid #ccc;
 }
-
+.contact:last-of-type{
+    border-bottom: 1px solid #ccc;
+}
+.contact h5, .contact h3{
+    margin: 0;
+    height: 1rem;
+}
 .contact:hover{
-    background: #E6E9ED;
+    background: #eef0f1;
 }
 
 .contact img{
-    width: 4rem;
+    width: 3rem;
     border-radius: 50%;
 }
 
@@ -34,7 +40,6 @@
 .bottom{
     display: grid;
     grid-template-columns: auto 3rem;
-    border-bottom: 3px solid #ABABAB;
     width: 100%;
     padding: .8rem 0;
     align-items: center;

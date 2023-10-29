@@ -5,6 +5,14 @@ import Header from './../components/Header';
 //components
 import {GoogleButton, EmailButton} from "../components/buttons";
 
+function InputText({fieldName, password}){
+  return (<>
+    <label>{fieldName}</label>
+    <input type={password ? "password" : "text"}/>
+  </>
+  )
+}
+
 export default function home(){
   return (<>
     <div className={styles.container}>
@@ -13,17 +21,12 @@ export default function home(){
         <title>Cadastro</title>
       </Head>
       <div className={styles.main}>
-        <Header title="Chat App"/>
         <div className={styles.content}>
-          <div className={styles.main_box}>
+          <div className={styles.main_box + " scrollBar"}>
             <h1>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
-            <div className={styles.line}></div>
-            <label>Nickname</label>
-            <input type="text"/>
-            <label>Email</label>
-            <input type="email"/>
-            <label>Senha</label>
-            <input type="password"/>
+            <InputText fieldName={"Nickname"}/>
+            <InputText fieldName={"Email"}/>
+            <InputText fieldName={"Senha"} password/>
             <GoogleButton />
             <EmailButton />
             <div className={styles.bottom_box}>

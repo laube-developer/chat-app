@@ -6,10 +6,14 @@ import Header from './../components/Header';
 import {GoogleButton, EmailButton} from "../components/buttons";
 import { useEffect, useState } from "react";
 
-function InputText({fieldName, password}){
+function InputText({fieldName, password, setState, value}){
   return (<div className={styles.inputBox}>
     <label>{fieldName}</label>
-    <input type={password ? "password" : "text"}/>
+    <input
+      type={password ? "password" : "text"}
+      onInput={(event)=>{setState(event.target.value)}}
+      value={value}  
+    />
   </div>
   )
 }
@@ -17,6 +21,10 @@ function InputText({fieldName, password}){
 export default function home(){
   const [count, setCount] = useState(0)
   const [alturaRelativa, setAltura] = useState(0)
+
+  const [nickname, setNickname] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   useEffect(()=>{
     const interval = setInterval(()=>{
@@ -28,6 +36,8 @@ export default function home(){
     return () => {clearInterval(interval)}
   }, [count, alturaRelativa])
 
+  
+
   return (<>
     <div className={styles.container}>
       <Head>
@@ -38,9 +48,9 @@ export default function home(){
         <div className={styles.content}>
           <div className={styles.main_box + " scrollBar"}>
             <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
-            <InputText fieldName={"Nickname"}/>
-            <InputText fieldName={"Email"}/>
-            <InputText fieldName={"Senha"} password/>
+            <InputText fieldName={"Nickname"} setState={setNickname} value={nickname}/>
+            <InputText fieldName={"Email"} setState={setEmail} value={email}/>
+            <InputText fieldName={"Senha"} password  setState={setPassword} value={password}/>
             <GoogleButton />
             <EmailButton />
             <div className={styles.bottom_box}>
@@ -48,6 +58,9 @@ export default function home(){
               <button className={styles.submit}>Cadastrar</button>
             </div>
             <p>Este é um site de conversas, crie sua conta no <span className={styles.blue_text}>Chat App</span> e comece a compartilhar suas ideias instantaneamente.</p>
+            <p>Nickname: {nickname}</p>
+            <p>Email: {email}</p>
+            <p>Senha: {password}</p>
           </div>
           <div className={styles.chamada}>
             <div className={styles.legenda} style={{top: alturaRelativa + "px"}} onClick={()=>{setAltura(0)}}>

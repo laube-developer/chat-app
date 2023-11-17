@@ -1,17 +1,29 @@
+import {hashPwd} from "../../util/bcrypt"
+
+import {main} from "../database"
+
 import User from "../schemas/userModel"
 
-import database from "../database"
-
 const saveUser = async (queryUser) => {
-    if(!database.connect()) return false
+    await main()
+
+    const newPwd = hashPwd(queryUser.password)
     
-    const newUser = new User(queryUser)
+    const newUser = {
+        ...queryUser,
+        password: newPwd
+    }
+    
+    const modelUser = new User(newUser)
 
-    return await newUser.save()
-
+    return User.insertMany(modelUser)
 }
 
+const getUser = async (queryUser) => {
+    return await User.find(queryUser)
+}
 
-export default{
-    saveUser
+export {
+    saveUser,
+    getUser
 }

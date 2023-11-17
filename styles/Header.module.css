@@ -19,6 +19,7 @@
     height: 3rem;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .title{
@@ -26,4 +27,5 @@
     align-items: center;
     justify-content: center;
     color: #3467E1;
+    cursor: pointer;
 }

@@ -1,0 +1,22 @@
+.background{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+}
+.messageBar{
+    position: relative;
+    min-width: 200px;
+    height: fit-content;
+    background: white;
+    padding: .3rem;
+    border-radius: 5px;
+    border-bottom: 5px solid rgb(43, 221, 43);
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.37);
+    text-align: center;
+}

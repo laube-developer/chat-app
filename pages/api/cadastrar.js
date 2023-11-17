@@ -1,24 +1,21 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import userController from "../../database/controllers/userController";
-import database from "../../database/database";
+import userController, { saveUser } from "../../database/controllers/userController";
+import {requestForaDoPadrao, convertRequestIntoJSON} from "../../util/requestValidation";
 
 export default async function handler(req, res) {
   if (requestForaDoPadrao(req.body)) {res.status(400); return}
 
-  const body = typeof(req.body) == "string" ? JSON.parse(req.body) : req.body
+  const body = convertRequestIntoJSON(req)
 
-  const response = await userController.saveUser(body[0])
-  .then((data)=>{
-    res.status(200).json(data)
-    console.log(data)
+  let user = body[0].user
+
+  await saveUser(user).then((data)=>{
+    res.status(200).json({
+      message: "Usuário criado com sucesso!",
+      user: {...data[0]._doc, password: undefined}
+    })
   })
-  .catch(err=>{
-    console.log(err)
+  .catch((err)=>{
+    res.status(400).json({message: "Falha ao cadastrar usuário. "})
   })
-
-}
-
-
-function requestForaDoPadrao(request){
-  return !(typeof(request) === "string" || typeof(request) === "object")
 }

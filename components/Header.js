@@ -3,6 +3,7 @@ import styles from "../styles/Header.module.css";
 
 //components
 import AuthBar from "./AuthBar";
+import Cookies from "js-cookie";
 
 export default function Header({title}){
     const rotas = useRouter()
@@ -14,7 +15,7 @@ export default function Header({title}){
             <h1>{title}</h1>
         </div>
         <div></div>
-        <AuthBar context={{uid: 30, authUser: {photoURL: "https://avatars.githubusercontent.com/u/59060532?v=4"}}}/>
+        <AuthBar />
     </div>
     )
 }

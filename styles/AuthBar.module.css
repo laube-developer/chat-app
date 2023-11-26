@@ -2,7 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: .5rem;
+    width: 12rem;
 }
 .fill_btn,
 .outline_btn

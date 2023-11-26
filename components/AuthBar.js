@@ -1,9 +1,26 @@
+import { useRouter } from "next/router"
 import styles from "../styles/AuthBar.module.css"
+import Cookies from "js-cookie"
+import { useEffect } from "react"
+import { signOut } from "firebase/auth"
 
-export default function AuthBar({context}){
+import initializeFirebase from "../database/firebase"
+const app = initializeFirebase().app
+import { getAuth } from "firebase/auth"
+const auth = getAuth(app)
+
+export default function AuthBar(){
+    const user = JSON.parse(Cookies.get("authUser") || "{}")
+    
+    const rotas = useRouter()
+
+    useEffect(()=>{
+        if (!user.uid) rotas.push("/")
+    }, [])
+
     return (<div className={styles.main}>
-        {context.uid == 0?<LoginButton />:<LogoutButton />}
-        {context.uid != 0?<UserIcon img_src={context.authUser.photoURL}/>:<></>}
+        <UserIcon img_src={user.photoURL}/>
+        <LogoutButton />
     </div>)
 }
 
@@ -14,7 +31,19 @@ function LoginButton(){
 }
 
 function LogoutButton(){
-    return (<button className={styles.outline_btn}>
+    const rotas = useRouter()
+
+    let closeUser = ()=>{
+        signOut(auth)
+        .then(()=>{
+            rotas.push("/")
+        })
+        .catch((err)=>{
+            alert("Falha ao efeturar logout. Erro: " + err.message)
+        })
+    }
+
+    return (<button className={styles.outline_btn} onClick={closeUser}>
         logout
     </button>)
 }

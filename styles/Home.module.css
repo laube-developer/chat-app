@@ -293,6 +293,9 @@
   .mockup{
     display: none;
   }
+  .chamada{
+    display: none;
+  }
   .content{
     margin: 1rem !important;
   }

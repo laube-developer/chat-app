@@ -1,3 +1,232 @@
-.main{
-    width: 300px;
+.background{
+    /* background-image: url("/favicon.svg"); */
+    background-size: 200%;
+}
+.main1, .main2, .main3{
+    min-width: 50vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2rem;
+    padding: 0 5rem;
+}
+.main3{
+    height: max-content;
+    display: flex;
+    padding: 5rem 5rem 0 5rem;
+}
+.main3 h1{
+    text-align: center;
+}
+.projectBox{
+    border-radius: 35px 35px 0 0;
+    background: #E8EEF9;
+    width: 100%;
+    display: grid;
+    grid-template-rows: max-content auto;
+    padding: 2rem 5rem 0 5rem;
+    gap: 2rem;
+}
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;    
+    gap: 2rem;
+    width: 100%;
+}
+.card p{
+    text-align: justify;
+}
+.cards h3{
+    color: #1248B5;
+    font-size: 1.7rem;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    height: max-content;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #C7DBFF;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.5rem;
+    gap: 1rem;
+}
+.card img{
+    width: 40px;
+    height: 40px;
+}
+.title{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+.description{
+    color: #ABABAB;
+}
+.box1, .box2{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    gap: 3rem;
+}
+.box1{
+    padding-right: 10rem;
+}
+.box2{
+    padding-left: 10rem;
+
+}
+.box1 h1, .box2 h1, .main3 h1{
+    font-size: 3rem;
+    color: #1248B5;
+    margin: 0;
+}
+.box1 p, .box2 p{
+    font-size: 25px;
+}
+.main1 img{
+    width: 100%;
+}
+.main2 img{
+    height: 80vh;
+    border-radius: 30px;
+}
+.button{
+    padding: 1rem 2rem;
+    height: 4rem;
+    border-radius: 50vh;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    justify-self: end;
+    border: none;
+    color: white;
+    background: #1248B5;
+    width: 100%;
+    font-size: 1rem;
+}
+.button:hover{
+    background-color: #245fd5;
+}
+.techs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
+}
+.techs button:hover{
+    border: 2px solid white;
+}
+.nextjs, .firebase, .github, .linkedinButton{
+    cursor: pointer;
+    padding: 1rem;
+    width: 50%;
+    height: 3.5rem;
+    border: none;
+    border-radius: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+}
+
+
+.nextjs{
+    background-image: url("/img/nextjs.png");
+}
+.firebase{
+    background-image: url("/img/firebase.png");
+}
+.github, .linkedinButton{
+    background: #1248B5;
+    color: white;
+    display: flex;
+    
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
+}
+.autor{
+    width: 20vw;
+    height: 20vw;
+    background-image: url("/img/autor.jpeg");
+    background-size: cover;
+    border-radius: 30px;
+    margin: 0 auto;
+}
+.linkedin{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: contain;
+    background-image: url("/img/linkedin.png");
+}
+.linkedinButton{
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 1200px) {
+    .main1{
+        grid-template-columns: 1fr;
+        grid-template-rows: .3fr 1fr;
+    }
+    .main1 img{
+        width: 50%;
+        justify-self: center;
+    }
+    .box1{
+        padding-right: 1rem;
+    }
+    .main2{
+        grid-template-columns: 1fr;
+        grid-template-rows: .3fr 1fr;
+    }
+    .main2 .box2{
+        padding: 2rem 0;
+    }
+    .main2 img{
+        margin: 0 auto;
+    }
+    .main3{
+        padding: 0;
+    }
+    .projectBox{
+        width: 100vw;
+        margin: 0;
+    }
+    .cards{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 2rem 0;
+    }
+    .card{
+        border-radius: 15px;
+        height: max-content;
+    }
+    .techs{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .autor{
+        width: 50vw;
+        height: 50vw;
+    }
 }

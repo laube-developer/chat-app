@@ -5,7 +5,7 @@ import styles from "../styles/Header.module.css";
 import AuthBar from "./AuthBar";
 import Cookies from "js-cookie";
 
-export default function Header({title}){
+export default function Header({title, lightBg}){
     const rotas = useRouter()
 
     return (
@@ -15,7 +15,7 @@ export default function Header({title}){
             <h1>{title}</h1>
         </div>
         <div></div>
-        <AuthBar />
+        <AuthBar lightBg={true}/>
     </div>
     )
 }

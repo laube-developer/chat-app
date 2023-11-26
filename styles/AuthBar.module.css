@@ -22,18 +22,21 @@
     background: white;
 }
 .fill_btn:hover{
-    transform: scale(110%);
-    transition: ease-in-out all .5s;
+    background: #eeeeee;
 }
 .outline_btn:hover{
     background: rgba(255, 255, 255, 0.062);
+}
+.outline_light_theme{
+    background: none;
+    border: 2px solid rgb(26, 63, 228) !important;
+    color: rgb(26, 63, 228) !important;
 }
 .outline_btn{
     background: none;
     border: 1px solid white;
     color: white;
 }
-
 .user_img{
     width: 3rem;
     height: 3rem;

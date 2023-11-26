@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Signin.module.css";
 import Head from "next/head";
 import Header from '../components/Header';
 
@@ -54,16 +54,17 @@ export default function home(){
 
     const currUser = Cookies.get("authUser")
 
-    if(!currUser.uid) signInWithEmailAndPassword(auth, email, password)
+    if(currUser == undefined) {signInWithEmailAndPassword(auth, email, password)
     .then(async (user)=>{
-      Cookies.set("authUser", JSON.stringify(user.user.toJSON()))
+      Cookies.set("authUser", JSON.stringify(user))
       rotas.push("/chat")
 
+      console.log(user)
     })
     .catch((err)=>{
         alert("Falha ao entrar! Tente novamente.")
         console.log(err)
-    })
+    })}
     
     else {
       rotas.push("/chat")
@@ -88,7 +89,6 @@ export default function home(){
               <button className={styles.submit} onClick={()=>{popUp()}}>Entrar</button>
             </div>
             <GoogleButton />
-            <LogoutGoogleButton />
             <p>Este é um site de conversas, crie sua conta no <span className={styles.blue_text}>Chat App</span> e comece a compartilhar suas ideias instantaneamente.</p>
           </div>
           <div className={styles.chamada}>

@@ -65,3 +65,34 @@ input:-webkit-autofill {
 input:-webkit-autofill {
   -webkit-text-fill-color: rgb(26, 63, 228) !important;
 }
+.outline_btn
+{
+    padding: 1rem 2rem;
+    height: 3rem;
+    border-radius: 50vh;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    justify-self: end;
+    border: none;
+} 
+.fill_btn{
+  color: white;
+  background: rgb(26, 63, 228);
+}
+.fill_btn:hover{
+  background: #eeeeee;
+}
+.outline_btn:hover{
+  background: rgba(255, 255, 255, 0.062);
+}
+.outline_light_theme{
+  background: none;
+  border: 2px solid rgb(26, 63, 228) !important;
+  color: rgb(26, 63, 228) !important;
+}
+.outline_btn{
+  background: none;
+  border: 1px solid white;
+  color: white;
+}

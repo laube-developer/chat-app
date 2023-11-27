@@ -1,7 +1,7 @@
 .header{
     width: 100%;
     display: grid;
-    grid-template-columns: 4rem 20rem auto 10rem;
+    grid-template-columns: 4rem 20rem auto auto;
     grid-template-rows: 3rem;
     padding: 1rem 4rem;
 }

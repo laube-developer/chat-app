@@ -3,11 +3,13 @@
     align-items: center;
     justify-content: flex-start;
     gap: .5rem;
-    width: 12rem;
 }
 .fill_btn,
 .outline_btn
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 1rem 2rem;
     height: 3rem;
     border-radius: 50vh;
@@ -19,7 +21,8 @@
 } 
 .fill_btn{
     color: rgb(26, 63, 228);
-    background: white;
+    background: white ;
+    border: 2px solid rgb(26, 63, 228);
 }
 .fill_btn:hover{
     background: #eeeeee;

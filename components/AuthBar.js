@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import styles from "../styles/AuthBar.module.css"
 import Cookies from "js-cookie"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { signOut } from "firebase/auth"
 
 import initializeFirebase from "../database/firebase"
@@ -9,17 +9,27 @@ const app = initializeFirebase().app
 import { getAuth } from "firebase/auth"
 const auth = getAuth(app)
 
-export default function AuthBar({lightBg}){
-    const user = JSON.parse(Cookies.get("authUser") || "{}")
+import MainContext from "../util/server/GlobalContext"
+
+export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
+
     
     const rotas = useRouter()
+    const {globalContext, setGContext} = useContext(MainContext)
+    
+    const user = globalContext.user
 
     useEffect(()=>{
-        if (!user) rotas.push("/")
+        // console.log(preventAutoRedirect)
+        if (!user?.uid && !preventAutoRedirect) rotas.push("/signin")
+        else{
+            setGContext({...globalContext, isLoadding: false})
+        }
     }, [])
 
-    if(user.uid) return (<div className={styles.main}>
+    if(user?.uid) return (<div className={styles.main}>
         <UserIcon img_src={user.photoURL}/>
+        <MinhasMensagens />
         <LogoutButton lightBg={lightBg}/>
     </div>)
 
@@ -31,7 +41,7 @@ export default function AuthBar({lightBg}){
 function LoginButton({lightBg}){
     const rotas = useRouter()
 
-    return (<button className={`${styles.outline_btn} ${lightBg ? styles.outline_light_theme : styles.fill_btn}`} onClick={()=>{rotas.push("/signin")}}>
+    return (<button className={styles.fill_btn} onClick={()=>{rotas.push("/signin")}}>
         Entrar
     </button>)
 }
@@ -39,11 +49,12 @@ function LoginButton({lightBg}){
 function LogoutButton({lightBg}){
     const rotas = useRouter()
 
+    const {globalContext, setGContext} = useContext(MainContext)
+
     let closeUser = ()=>{
         signOut(auth)
         .then(()=>{
-            Cookies.set("authUser", "")
-            Cookies.remove("authUser")
+            setGContext({...globalContext, user: undefined})
 
             if(rotas.pathname != "/") rotas.push("/")
 
@@ -54,8 +65,8 @@ function LogoutButton({lightBg}){
         })
     }
 
-    return (<button className={`${styles.outline_btn } ${styles.outline_light_theme}`} onClick={closeUser}>
-        logout
+    return (<button className={styles.fill_btn} onClick={closeUser}>
+        sair
     </button>)
 }
 
@@ -63,4 +74,12 @@ function UserIcon({img_src}){
     return(<div className={styles.user_img}>
         <img src={img_src}></img>
     </div>)
+}
+
+function MinhasMensagens(){
+    const rotas = useRouter()
+
+    return <button className={styles.fill_btn} onClick={()=>{rotas.push("/chat")}}>
+        Minhas Mensages
+    </button>
 }

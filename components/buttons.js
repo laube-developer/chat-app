@@ -13,32 +13,12 @@ const auth = getAuth(app)
 
 //js-cookie
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+import MainContext from "../util/server/GlobalContext";
 
-function GoogleButton(){
-    
-    const rotas = useRouter()
-
-    let popUp = async ()=>{
-        let app = initializeFirebase().app
-        if(!app) return
-
-    
-        signInWithPopup(auth, provider)
-        .then(async (user)=>{
-            //user is response.user
-            Cookies.set("authUser", JSON.stringify(user))
-
-            rotas.push("/chat")
-        
-        })
-        .catch((err)=>{
-            console.warn(err)
-        })
-    }
-
-    return (<button className={styles.button} onClick={()=>{popUp()}}>
+function GoogleButton({handleClick}){
+    return (<button className={styles.button} onClick={()=>{handleClick()}}>
         <FcGoogle />
         Entrar com Google
     </button>)

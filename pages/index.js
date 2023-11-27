@@ -22,7 +22,7 @@ export default function Index(){
             <link rel="icon" href="/favicon.svg" />
             <title>Chat app | Descubra</title>
         </Head>
-        <Header title={"Chat app"} lightBg/>
+        <Header title={"Chat app"} lightBg preventAutoRedirect/>
         <section className={styles.main1}>
             <img src="/img/index1.png" alt={"Chat app mockup"}/>
             <div className={inter200.className + " " + styles.box1}>

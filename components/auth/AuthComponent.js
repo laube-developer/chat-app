@@ -11,6 +11,7 @@ const whiteList = [
 export default function AuthComponent({children, user, setUser}){
     const [isLoadding, setLoading] = useState(true)
     const rotas = useRouter()
+    
     useEffect(()=>{
         let authUser = JSON.parse(Cookies.get("user"))
 
@@ -21,7 +22,7 @@ export default function AuthComponent({children, user, setUser}){
             setUser(authUser)
             setLoading(false)
         }
-    },[])
+    },[rotas, setUser])
 
     return <div>
         {isLoadding && <Loadding />}

@@ -36,7 +36,7 @@ export default function Signin(){
 
     if(authUser?.uid) rotas.push("/chat")
     else setLoading(false)
-  }, [])
+  }, [rotas])
 
   useEffect(()=>{
     const interval = setInterval(()=>{

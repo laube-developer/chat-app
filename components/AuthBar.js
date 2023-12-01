@@ -12,6 +12,7 @@ const auth = getAuth(app)
 import { LogoutButton, LoginButton, MinhasMensagens} from "./buttons"
 
 import MainContext from "../util/server/GlobalContext"
+import Image from "next/image"
 
 
 export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
@@ -36,6 +37,6 @@ export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
 
 function UserIcon({img_src}){
     return(<div className={styles.user_img}>
-        <img src={img_src}></img>
+        <Image src={img_src} alt="user_icon" width={50} height={50} />
     </div>)
 }

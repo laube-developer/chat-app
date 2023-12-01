@@ -18,6 +18,8 @@ const auth = getAuth(app)
 
 //Next.js
 import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Signin(){
   const [count, setCount] = useState(0)
@@ -77,7 +79,6 @@ export default function Signin(){
           
       })
       .catch((err)=>{
-          setGContext({...globalContext,isLoadding: false})
           console.warn(err)
       })
   }
@@ -95,7 +96,7 @@ export default function Signin(){
         <Header title={"Chat app"}/>
           <div className={styles.content}>
             <div className={styles.main_box + " scrollBar"}>
-              <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Entrar no <span className={styles.blue_text}>Chat App</span></h1>
+              <h1><Image width={20} height={20} src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Entrar no <span className={styles.blue_text}>Chat App</span></h1>
               <InputText fieldName={"Email"} setState={setEmail} value={email}/>
               <InputText fieldName={"Senha"} password  setState={setPassword} value={password}/>
               <div className={styles.bottom_box}>
@@ -103,8 +104,8 @@ export default function Signin(){
               </div>
               <GoogleButton handleClick={signInGoogle}/>
               <div style={{textAlign: "center", fontSize:"1.2rem"}}>
-                <h5><span className={styles.blue_text}><a href="/resetPassword">Esqueci a senha</a></span></h5>
-                <h5><span className={styles.blue_text}><a href="/cadastrar">Realizar cadastro</a></span></h5>
+                <h5><span className={styles.blue_text}><Link href="/resetPassword">Esqueci a senha</Link></span></h5>
+                <h5><span className={styles.blue_text}><Link href="/cadastrar">Realizar cadastro</Link></span></h5>
               </div>
               <p>Este é um site de conversas, crie sua conta no <span className={styles.blue_text}>Chat App</span> e comece a compartilhar suas ideias instantaneamente.</p>
             </div>
@@ -113,10 +114,10 @@ export default function Signin(){
                 <h1>Compartilhe suas <span className={styles.blue_text}>ideias</span> instantaneamente com o <span className={styles.blue_text}>Chat App</span></h1>
               </div>
               <div className={styles.mockup}>
-                <img src="/img/mockup_chat.png"
-                className={styles.mockup_chat}></img>
-                <img src="/img/mockup_celular.png"
-                className={styles.mockup_celular}></img>
+                <Image width={500} height={500} src="/img/mockup_chat.png" alt="mockup_chat"
+                className={styles.mockup_chat} />
+                <Image width={500} height={500} src="/img/mockup_celular.png"  alt="mockup_celular"
+                className={styles.mockup_celular} />
               </div>
             </div>
           </div>

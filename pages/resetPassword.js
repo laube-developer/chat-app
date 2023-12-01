@@ -21,6 +21,7 @@ const auth = getAuth(app)
 //Next.js
 import { useRouter } from "next/router";
 import MainContext from "../util/server/GlobalContext";
+import Link from "next/link";
 
 
 export default function Signin(){
@@ -82,18 +83,18 @@ export default function Signin(){
             <div className={styles.main_box + " scrollBar"}>
 
               {pageState.currPage == 1 && <>
-                <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
+                <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
                 <InputText fieldName={"Email"} setState={setEmail} value={email}/>
                 <p>Digite o endereço de email para recuperar a sua senha. Será enviado um email para este endereço com as instruções para recuperação da senha.</p>
                 <p>Email selecionado: <span className={styles.blue_text}>{email}</span></p>
                 <div className={styles.bottom_box}>
-                  <h5><span className={styles.blue_text}><a href="/signin">Entrar com email</a></span></h5>
+                  <h5><span className={styles.blue_text}><Link passHref="/signin">Entrar com email</Link></span></h5>
                   <button className={styles.submit} onClick={recuperarSenha}>Enviar email</button>
                 </div>
               </>}
 
               {pageState.currPage == 2 && <>
-                <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
+                <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
                 <h2 style={{color: "#00b100"}}>Email enviado com sucesso</h2>
                 <div className={styles.bottom_box}>
                   <button className={styles.submit} onClick={()=>{setPageState({...pageState, currPage: 1})}}>Voltar</button>
@@ -102,7 +103,7 @@ export default function Signin(){
               </>}
 
               {pageState.currPage == 3 && <>
-                <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
+                <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Recuperar senha no <span className={styles.blue_text}>Chat App</span></h1>
                 <h2 style={{color: "#b10000"}}>Falha ao recuperar senha</h2>
                 <p>{pageState.erroMessage}</p>
                 <div className={styles.bottom_box}>
@@ -119,10 +120,10 @@ export default function Signin(){
                 <h1>Compartilhe suas <span className={styles.blue_text}>ideias</span> instantaneamente com o <span className={styles.blue_text}>Chat App</span></h1>
               </div>
               <div className={styles.mockup}>
-                <img src="/img/mockup_chat.png"
-                className={styles.mockup_chat}></img>
-                <img src="/img/mockup_celular.png"
-                className={styles.mockup_celular}></img>
+                <Image src="/img/mockup_chat.png" alt="mockup_chat"
+                className={styles.mockup_chat}/>
+                <Image src="/img/mockup_celular.png" alt="mockup_celular"
+                className={styles.mockup_celular}/>
               </div>
             </div>
           </div>

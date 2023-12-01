@@ -5,6 +5,7 @@ import Header from "../components/Header";
 //fonts
 import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
+import Image from "next/image";
 const inter200 = Inter({
     subsets: ["latin"],
     weight: "200"
@@ -41,7 +42,7 @@ export default function Index(){
                     Compartilhe suas ideias com seus amigos ou familiares em tempo real para qualquer lugar do globo
                 </p>
             </div>
-            <img src="/img/globe.jpg" alt={"Chat app mockup"}/>
+            <Image width={500} height={500} src="/img/globe.jpg" alt={"Chat app mockup"}/>
         </section>
         <section className={styles.main3}>
             <div className={styles.projectBox}>
@@ -49,7 +50,7 @@ export default function Index(){
                 <div className={styles.cards + " " + inter200.className}>
                     <div className={styles.card}>
                         <div className={styles.title}>
-                            <img src="/img/project.png"/>
+                            <Image width={500} height={500} src="/img/project.png" alt="project"/>
                             <h3>Projeto</h3>
                         </div>
                         <div>
@@ -63,7 +64,7 @@ export default function Index(){
                     </div>
                     <div className={styles.card}>
                         <div className={styles.title}>
-                            <img src="/img/repositorio.png"/>
+                            <Image  width={500} height={500} src="/img/repositorio.png" alt="repositório"/>
                             <h3>Repositórios</h3>
                         </div>
                         <div>
@@ -73,7 +74,7 @@ export default function Index(){
                     </div>
                     <div className={styles.card}>
                         <div className={styles.title}>
-                            <img src="/img/user.png"/>
+                            <Image  width={500} height={500} src="/img/user.png" alt="user"/>
                             <h3>Autor</h3>
                         </div>
                         <div>

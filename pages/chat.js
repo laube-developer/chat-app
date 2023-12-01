@@ -64,9 +64,9 @@ export default function Chat(){
                                 <input />
                             </div>
                             {}
-                            <Contact key={1} name="Contact" description="Description" hour="20:18" img_url="https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"/>
+                            {/* <Contact key={1} name="Contact" description="Description" hour="20:18" img_url="https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"/>
                             <Contact key={2} name="BFF" description="Description" hour="20:01" img_url="https://avatars.githubusercontent.com/u/5692572?v=4"/>
-                            <Contact key={3} name="James" description="Description" hour="20:40" img_url="https://avatars.githubusercontent.com/u/17869024?s=200&v=4"/>
+                            <Contact key={3} name="James" description="Description" hour="20:40" img_url="https://avatars.githubusercontent.com/u/17869024?s=200&v=4"/> */}
                         </div>
                     </div>
                     <div className={styles.right_box}>

@@ -22,6 +22,8 @@ import { writeUserData } from "../database/realtimeDB";
 //Next.js
 import { useRouter } from "next/router";
 import MainContext from "../util/server/GlobalContext";
+import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Signin(){
@@ -111,11 +113,11 @@ export default function Signin(){
         <Header title={"Chat app"}/>
           <div className={styles.content}>
             <div className={styles.main_box + " scrollBar"}>
-              <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
+              <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
               <InputText fieldName={"Email"} setState={setEmail} value={email}/>
               <InputText fieldName={"Senha"} password  setState={setPassword} value={password}/>
               <div className={styles.bottom_box}>
-                <h5><span className={styles.blue_text}><a href="/signin">Entrar com email</a></span></h5>
+                <h5><span className={styles.blue_text}><Link passHref="/signin">Entrar com email</Link></span></h5>
                 <button className={styles.submit} onClick={registerInEmail}>Cadastrar</button>
               </div>
               <GoogleButton handleClick={signInGoogle}/>
@@ -126,10 +128,10 @@ export default function Signin(){
                 <h1>Compartilhe suas <span className={styles.blue_text}>ideias</span> instantaneamente com o <span className={styles.blue_text}>Chat App</span></h1>
               </div>
               <div className={styles.mockup}>
-                <img src="/img/mockup_chat.png"
-                className={styles.mockup_chat}></img>
-                <img src="/img/mockup_celular.png"
-                className={styles.mockup_celular}></img>
+                <Image src="/img/mockup_chat.png"
+                className={styles.mockup_chat} alt="mockup"/>
+                <Image src="/img/mockup_celular.png"
+                className={styles.mockup_celular} alt="mockup-celular"/>
               </div>
             </div>
           </div>

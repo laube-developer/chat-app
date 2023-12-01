@@ -1,7 +1,8 @@
 import styles from "../styles/Loadding.module.css"
 
-import Lottie from "react-lottie"
 import * as animationData from "../util/server/loadding_animation.json"
+
+import Lottie from "react-lottie"
 
 //Fonts
 import {Inter} from "next/font/google"

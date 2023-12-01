@@ -25,7 +25,7 @@ export default function Index(){
         </Head>
         <Header title={"Chat app"} lightBg preventAutoRedirect/>
         <section className={styles.main1}>
-            <img src="/img/index1.png" alt={"Chat app mockup"}/>
+            <Image width={100} height={100} src="/img/index1.png" alt={"Chat app mockup"}/>
             <div className={inter200.className + " " + styles.box1}>
                 <h1>Seu novo mensageiro está aqui</h1>
                 <p className={inter500.className + " " + styles.description}>&gt; Conversas em tempo real<br/>

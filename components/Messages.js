@@ -6,7 +6,7 @@ function LeftMessage({children, date}){
 
     return (<div className={styles.left_message}>
         <div className={styles.head}>
-            <img src="https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"/>
+            <Image width={60} height={60} alt={"user"}src="https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"/>
             <p>{hora}:{minuto}</p>
         </div>
         <div className={styles.content}>

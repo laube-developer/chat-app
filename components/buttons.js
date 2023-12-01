@@ -24,23 +24,6 @@ function GoogleButton({handleClick}){
     </button>)
 }
 
-function LogoutGoogleButton (){
-
-    let logout = ()=>{
-        signOut(auth)
-        .then(()=>{
-            alert("Logout efetuado com sucesso")
-        })
-        .catch((err)=>{
-            console.warn(err)
-        })
-    }
-
-    return (<button className={styles.button} onClick={()=>{logout()}}>
-        Sair
-    </button>)
-}
-
 function EmailButton({email, password}){
 
     return (<button className={styles.button} onClick={()=>{popUp()}}>
@@ -49,4 +32,46 @@ function EmailButton({email, password}){
     </button>)
 }
 
-export {GoogleButton, EmailButton, LogoutGoogleButton}
+function LogoutButton({lightBg}){
+    const rotas = useRouter()
+
+    let closeUser = ()=>{
+        Cookies.remove("user")
+        
+        signOut(auth)
+        .then(()=>{
+            if(rotas.pathname != "/") rotas.push("/")
+            else rotas.reload()
+        })
+        .catch((err)=>{
+            alert("Falha ao efeturar logout. Erro: " + err.message)
+        })
+    }
+
+    return (<button className={styles.fill_btn} onClick={closeUser}>
+        Sair
+    </button>)
+}
+
+function LoginButton({lightBg}){
+    const rotas = useRouter()
+
+    return (<button className={styles.fill_btn} onClick={()=>{rotas.push("/signin")}}>
+        Entrar
+    </button>)
+}
+function MinhasMensagens(){
+    const rotas = useRouter()
+
+    return <button className={styles.fill_btn} onClick={()=>{rotas.push("/chat")}}>
+        Minhas Mensages
+    </button>
+}
+
+export {
+    GoogleButton,
+    EmailButton,
+    LogoutButton,
+    LoginButton,
+    MinhasMensagens
+}

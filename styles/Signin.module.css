@@ -229,6 +229,7 @@
 
 .submit{
   height: 3rem;
+  width: 100%;
   padding: 0 2rem;
   border-radius: 50vh;
   border: none;
@@ -254,39 +255,6 @@
 .mockup_chat, .mockup_celular{
   border-radius: 2rem;
   box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
-}
-
-.inputBox{
-  position: relative;
-}
-
-.inputBox label{
-  position: absolute;
-  top: 0;
-  margin-left: 1rem;
-  background: #638ee4;
-  color: #ffffff;
-  padding: 0 .5rem;
-  border-radius: 50vh;
-  font-size: .8rem;
-  font-weight: 600;
-}
-
-.inputBox input{
-  width: 100%;
-  height: 3rem;
-  min-height: 40px;
-  margin: .5rem 0;
-  border-radius: 50vh;
-  border: none;
-  outline: none;
-  background: #E6E9ED;
-  text-indent: 1rem;
-  font-size: 1.1rem;
-  text-align: left;
-  border-bottom: .5rem;
-  color: #494949;
-  font-weight: 500;
 }
 
 @media (max-width: 980px){

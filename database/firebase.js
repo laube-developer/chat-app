@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp} from "firebase/app";
+import { initializeApp } from "firebase/app";
 
 const initializeFirebase = ()=>{
 
@@ -11,12 +11,13 @@ const initializeFirebase = ()=>{
     messagingSenderId: "242820658513",
     appId: "1:242820658513:web:64ea26eed25a6ce4fbcf70",
     measurementId: "G-SVE7ST4LP1",
+    databaseURL: "https://chat-app-b9ceb-default-rtdb.firebaseio.com"
   };
 
   const app = initializeApp(firebaseConfig);
 
   return {
-      app, 
+      app,
   }
 }
 

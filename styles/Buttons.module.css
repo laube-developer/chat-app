@@ -22,3 +22,40 @@
 .button svg{
     font-size: 1.5rem;
 }
+
+.fill_btn,
+.outline_btn
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    height: 3rem;
+    border-radius: 50vh;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    justify-self: end;
+    border: none;
+} 
+.fill_btn{
+    color: rgb(26, 63, 228);
+    background: white ;
+    border: 2px solid rgb(26, 63, 228);
+}
+.fill_btn:hover{
+    background: #eeeeee;
+}
+.outline_btn:hover{
+    background: rgba(255, 255, 255, 0.062);
+}
+.outline_light_theme{
+    background: none;
+    border: 2px solid rgb(26, 63, 228) !important;
+    color: rgb(26, 63, 228) !important;
+}
+.outline_btn{
+    background: none;
+    border: 1px solid white;
+    color: white;
+}

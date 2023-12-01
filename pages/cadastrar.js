@@ -5,19 +5,24 @@ import Header from '../components/Header';
 //components
 import {GoogleButton, EmailButton, LogoutGoogleButton} from "../components/buttons";
 import { useEffect, useState } from "react";
+import MessageBar from "../components/MessageBar";
 import Loadding from "../components/Loadding";
 import InputText from "../components/InputText";
 
+
 //Firebase
-import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth"
 import initializeFirebase from "../database/firebase";
 import Cookies from "js-cookie";
 const provider = new GoogleAuthProvider()
 const app = initializeFirebase().app
 const auth = getAuth(app)
+import { writeUserData } from "../database/realtimeDB";
 
 //Next.js
 import { useRouter } from "next/router";
+import MainContext from "../util/server/GlobalContext";
+
 
 export default function Signin(){
   const [count, setCount] = useState(0)
@@ -47,19 +52,20 @@ export default function Signin(){
     return () => {clearInterval(interval)}
   }, [count, alturaRelativa])
 
-  let signInEmail = () => {
+  let registerInEmail = () => {
     if(!app) return
 
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
     .then(async ({user})=>{
-
       Cookies.set("user", JSON.stringify(user))
+
+      writeUserData(user.uid, "", user.email, user.photoURL)
 
       rotas.push("/chat")
     })
     .catch((err)=>{
-      alert(`Falha ao entrar! Tente novamente.\n\n${err.message}`)
-      console.warn(err)
+        alert(`Falha ao cadastrar! Tente novamente.\n\n${err.message}`)
+        console.warn(err)
     })
 
   }
@@ -67,8 +73,18 @@ export default function Signin(){
   let signInGoogle = async ()=>{
       if(!app) return
 
+      setGContext({...globalContext,isLoadding: true})
+  
       signInWithPopup(auth, provider)
-      .then(async ({user})=>{       
+      .then(async ({user})=>{
+
+          //user is response.user
+          setGContext({
+              ...globalContext,
+              user,
+              isAuthenticated: true,
+          })
+          
           Cookies.set("user", JSON.stringify(user))
 
           await saveUser({user})
@@ -89,23 +105,20 @@ export default function Signin(){
       <div className={styles.container}>
         <Head>
           <link rel="icon" href="/favicon.svg" />
-          <title>Entrar</title>
+          <title>Cadastro</title>
         </Head>
         <div className={styles.main}>
         <Header title={"Chat app"}/>
           <div className={styles.content}>
             <div className={styles.main_box + " scrollBar"}>
-              <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Entrar no <span className={styles.blue_text}>Chat App</span></h1>
+              <h1><img src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
               <InputText fieldName={"Email"} setState={setEmail} value={email}/>
               <InputText fieldName={"Senha"} password  setState={setPassword} value={password}/>
               <div className={styles.bottom_box}>
-                <button className={styles.submit} onClick={signInEmail}>Entrar</button>
+                <h5><span className={styles.blue_text}><a href="/signin">Entrar com email</a></span></h5>
+                <button className={styles.submit} onClick={registerInEmail}>Cadastrar</button>
               </div>
               <GoogleButton handleClick={signInGoogle}/>
-              <div style={{textAlign: "center", fontSize:"1.2rem"}}>
-                <h5><span className={styles.blue_text}><a href="/resetPassword">Esqueci a senha</a></span></h5>
-                <h5><span className={styles.blue_text}><a href="/cadastrar">Realizar cadastro</a></span></h5>
-              </div>
               <p>Este é um site de conversas, crie sua conta no <span className={styles.blue_text}>Chat App</span> e comece a compartilhar suas ideias instantaneamente.</p>
             </div>
             <div className={styles.chamada}>

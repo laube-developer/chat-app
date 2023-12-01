@@ -1,5 +1,7 @@
 import styles from "../styles/Messages.module.css"
 
+import Image from "next/image"
+
 function LeftMessage({children, date}){
     let hora = date ? date.getHours() : 0
     let minuto = date ? date.getMinutes() : 0

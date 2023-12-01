@@ -73,8 +73,6 @@ export default function Signin(){
       .then(async ({user})=>{       
           Cookies.set("user", JSON.stringify(user))
 
-          await saveUser({user})
-
           rotas.push("/chat")
           
       })

@@ -61,7 +61,9 @@ export default function Signin(){
     .then(async ({user})=>{
       Cookies.set("user", JSON.stringify(user))
 
-      writeUserData(user.uid, "", user.email, user.photoURL)
+      console.log(user)
+
+      writeUserData(user.uid, "", user.email, "")
 
       rotas.push("/chat")
     })
@@ -74,22 +76,15 @@ export default function Signin(){
 
   let signInGoogle = async ()=>{
       if(!app) return
-
-      setGContext({...globalContext,isLoadding: true})
   
       signInWithPopup(auth, provider)
       .then(async ({user})=>{
 
           //user is response.user
-          setGContext({
-              ...globalContext,
-              user,
-              isAuthenticated: true,
-          })
           
           Cookies.set("user", JSON.stringify(user))
 
-          await saveUser({user})
+          writeUserData(user.uid, user.displayName, user.email, user.photoURL)
 
           rotas.push("/chat")
           
@@ -113,11 +108,11 @@ export default function Signin(){
         <Header title={"Chat app"}/>
           <div className={styles.content}>
             <div className={styles.main_box + " scrollBar"}>
-              <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube"/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
+              <h1><Image src="/favicon.svg" alt="Chat app - by Rafael Laube" width={50} height={50}/>Cadastrar no <span className={styles.blue_text}>Chat App</span></h1>
               <InputText fieldName={"Email"} setState={setEmail} value={email}/>
               <InputText fieldName={"Senha"} password  setState={setPassword} value={password}/>
               <div className={styles.bottom_box}>
-                <h5><span className={styles.blue_text}><Link passHref="/signin">Entrar com email</Link></span></h5>
+                <h5><span className={styles.blue_text}><Link href="/signin">Entrar com email</Link></span></h5>
                 <button className={styles.submit} onClick={registerInEmail}>Cadastrar</button>
               </div>
               <GoogleButton handleClick={signInGoogle}/>
@@ -128,10 +123,10 @@ export default function Signin(){
                 <h1>Compartilhe suas <span className={styles.blue_text}>ideias</span> instantaneamente com o <span className={styles.blue_text}>Chat App</span></h1>
               </div>
               <div className={styles.mockup}>
-                <Image src="/img/mockup_chat.png"
-                className={styles.mockup_chat} alt="mockup"/>
-                <Image src="/img/mockup_celular.png"
-                className={styles.mockup_celular} alt="mockup-celular"/>
+              <Image width={500} height={500} src="/img/mockup_chat.png" alt="mockup_chat"
+                className={styles.mockup_chat} />
+                <Image width={500} height={500} src="/img/mockup_celular.png"  alt="mockup_celular"
+                className={styles.mockup_celular} />
               </div>
             </div>
           </div>

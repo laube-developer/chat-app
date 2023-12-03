@@ -25,7 +25,7 @@ export default function Index(){
         </Head>
         <Header title={"Chat app"} lightBg preventAutoRedirect/>
         <section className={styles.main1}>
-            <Image width={100} height={100} src="/img/index1.png" alt={"Chat app mockup"}/>
+            <Image width={640} height={556} src="/img/index1.png" alt={"Chat app mockup"}/>
             <div className={inter200.className + " " + styles.box1}>
                 <h1>Seu novo mensageiro está aqui</h1>
                 <p className={inter500.className + " " + styles.description}>&gt; Conversas em tempo real<br/>
@@ -42,7 +42,7 @@ export default function Index(){
                     Compartilhe suas ideias com seus amigos ou familiares em tempo real para qualquer lugar do globo
                 </p>
             </div>
-            <Image width={500} height={500} src="/img/globe.jpg" alt={"Chat app mockup"}/>
+            <Image width={640} height={986} sizes="10rem 10rem" src="/img/globe.jpg" alt={"Chat app mockup"}/>
         </section>
         <section className={styles.main3}>
             <div className={styles.projectBox}>

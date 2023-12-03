@@ -22,6 +22,8 @@ export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
         let authUser = JSON.parse(Cookies.get("user") || "{}")
 
         setUser(authUser)
+
+        console.log(user)
     }, [])
 
     if(user?.uid) return (<div className={styles.main}>

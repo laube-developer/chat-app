@@ -1,0 +1,46 @@
+.fullbox{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+}
+.title{
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+}
+.container{
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+}
+.container span{
+    color: rgb(26, 63, 228);
+    padding: .3rem;
+    background-color: rgb(26, 63, 228, .3);
+    border-radius: 10px;
+}
+.container input{
+    background-color: rgba(204, 204, 204, 0.3);
+    font-size: 1.3rem;
+    padding: .3rem;
+    border-radius: 10px;
+    border: none;
+    height: 3rem;
+}
+.addLine{
+    display: grid;
+    grid-template-columns: auto 3rem;
+    gap: 1rem;
+}
+.addButton{
+    height: 100%;
+    border: none;
+    background: rgba(204, 204, 204, 0.3);
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}

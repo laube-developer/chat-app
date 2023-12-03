@@ -97,13 +97,6 @@
 .box1 p, .box2 p{
     font-size: 25px;
 }
-.main1 img{
-    width: 100%;
-}
-.main2 img{
-    height: 80vh;
-    border-radius: 30px;
-}
 .button{
     padding: 1rem 2rem;
     height: 4rem;
@@ -189,7 +182,6 @@
         grid-template-rows: .3fr 1fr;
     }
     .main1 img{
-        width: 50%;
         justify-self: center;
     }
     .box1{

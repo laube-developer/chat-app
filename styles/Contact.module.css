@@ -8,6 +8,12 @@
     cursor: pointer;
     border-top: 1px solid #ccc;
 }
+@media (max-width: 1000px){
+    .contact{
+        padding: 0 1rem;
+    }
+}
+
 .contact:last-of-type{
     border-bottom: 1px solid #ccc;
 }
@@ -20,7 +26,6 @@
 }
 
 .contact img{
-    width: 3rem;
     border-radius: 50%;
 }
 

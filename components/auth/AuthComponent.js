@@ -22,7 +22,7 @@ export default function AuthComponent({children, user, setUser}){
             setUser(authUser)
             setLoading(false)
         }
-    },[rotas, setUser])
+    },[rotas])
 
     return <div>
         {isLoadding && <Loadding />}

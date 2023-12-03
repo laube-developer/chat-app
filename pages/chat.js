@@ -1,7 +1,7 @@
 import styles from "../styles/Chat.module.css"
 
 import Head from "next/head"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 
 //Components
 import Header from "../components/Header"
@@ -21,15 +21,21 @@ import MainContext from "../util/server/GlobalContext"
 //firebase authentication
 import initializeFirebase from "../database/firebase"
 import { getAuth } from "firebase/auth"
+import { NewContactButton } from "../components/NewContact"
 const app = initializeFirebase().app
 const auth = getAuth(app)
 
-//firestore database
+//realtime db
+import { getChats } from "../database/realtimeDB"
+
+import Cookies from "js-cookie"
 
 export default function Chat(){
     const {globalContext, setGContext} = useContext(MainContext)
     const [user, setUser] = useState({})
-    
+
+    const MessagesBoxRef = useRef(null)
+
     const [messages, setMessages] = useState([
         {type: "left", content:"Bom dia, tudo bem?", hora: new Date()},
     ])
@@ -37,14 +43,47 @@ export default function Chat(){
 
     const [newMessageInput, setMessage] = useState("sdfasf")
 
-    // useEffect(()=>{
-    //     const execute = async ()=>{
-    //         let contatos = await getContacts({user: globalContext.user})
+    const [contacts, setContacts] = useState([
+        // {
+        //     name: "Contact",
+        //     description: "Description",
+        //     lastMessageDate: new Date(new Date().getTime()),
+        //     img_url: "https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"
+        // },{
+        //     name: "BFF",
+        //     description: "Description",
+        //     lastMessageDate: new Date(new Date().getTime()),
+        //     img_url: "https://avatars.githubusercontent.com/u/5692572?v=4"
+        // },{
+        //     name: "James",
+        //     description: "Description",
+        //     lastMessageDate: new Date(new Date().getTime()),
+        //     img_url: "https://avatars.githubusercontent.com/u/17869024?s=200&v=4"
+        // },
+    ])
+    function scrollToBottom(){
+        setTimeout(()=>{
+            MessagesBoxRef.current.scrollTop = MessagesBoxRef.current.scrollHeight + MessagesBoxRef.current.clientHeight
+
+        }, 1)
+    }
+
+    function sendMessage(e){
+        if(newMessageInput == "") return
+        setMessages([...messages, {type: "right", content: newMessageInput, hora: new Date()}])
+        setMessage("")
+        scrollToBottom()
         
-    //         console.log(contatos)
-    //     }
-    //     execute()
-    // }, [])
+    }
+
+    function receiveMessage({content, hora}){
+        setMessages([...messages, {type: "left", content: content, hora: hora}])
+        scrollToBottom()
+    }
+
+    useEffect(()=>{
+        getChats(user.uid, (chats)=>console.log(chats))
+    }, [])
 
     return (<AuthComponent user={user} setUser={setUser}>
         <div className={styles.container}>
@@ -63,15 +102,21 @@ export default function Chat(){
                                 <BiSearchAlt2></BiSearchAlt2>
                                 <input />
                             </div>
-                            {}
-                            <Contact key={1} name="Contact" description="Description" hour="20:18" img_url="https://avatars.githubusercontent.com/u/59060532?s=400&u=e2da247b3c0714eac25e3b18d167232f9fdccc7c&v=4"/>
-                            <Contact key={2} name="BFF" description="Description" hour="20:01" img_url="https://avatars.githubusercontent.com/u/5692572?v=4"/>
-                            <Contact key={3} name="James" description="Description" hour="20:40" img_url="https://avatars.githubusercontent.com/u/17869024?s=200&v=4"/>
+                            {contacts.length == 0 && <NewContactButton />}
+                            {contacts.map((item)=>{
+                                return <Contact
+                                    name={item.name}
+                                    description={item.description}
+                                    hour={`${item.lastMessageDate.getHours()}:${item.lastMessageDate.getMinutes()}`}
+                                    img_url={item.img_url}
+                                />
+                            })}
+
                         </div>
                     </div>
                     <div className={styles.right_box}>
                         <div className={styles.chat_box}>
-                            <div className={styles.messages + " scrollBar"}>
+                            <div className={styles.messages + " scrollBar"} ref={MessagesBoxRef}>
                                 {messages.map((message, id)=>{
                                     if(message.type == "right"){
                                         return <RightMessage key={id} date={message.hora}>{message.content}</RightMessage>
@@ -83,13 +128,10 @@ export default function Chat(){
                             <div className={styles.input_box}>
                                 <div className={styles.input_bar}>
                                     <GoSmiley/>
-                                    <input value={newMessageInput} onInput={(e)=>{setMessage(e.target.value)}}/>
-                                    <AiOutlinePaperClip />
+                                    <input value={newMessageInput} onInput={(e)=>{setMessage(e.target.value)}} onKeyDown={(e)=>{if(e.key == "Enter") sendMessage()}}/>
+                                    <AiOutlinePaperClip onClick={()=>{receiveMessage({content:"e aí",hora: new Date()})}}/>
                                 </div>
-                                <button onClick={(e)=>{
-                                    setMessages([...messages, {type: "right", content: newMessageInput, hora: new Date()}])
-                                    setMessage("")
-                                }}><HiPaperAirplane /></button>
+                                <button onClick={sendMessage}><HiPaperAirplane /></button>
                             </div>
                         </div>
                     </div>

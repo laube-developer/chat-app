@@ -6,8 +6,10 @@
 
 [] Buscar contatos e finalizar mecanismo de salvar os contatos
 
-[] Mecanismo de salvar usuário no firestore ao fazer login ou cadastrar
+[x] Mecanismo de salvar usuário no firestore ao fazer login ou cadastrar
 
 [x] Problema do react-lottie resolvido com 
 > npm config set legacy-peer-deps true
 > npm i
+
+[] Verificar se já existe conversa entre dois usuários (realtimeDB.JS)

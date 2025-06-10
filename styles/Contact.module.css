@@ -1,23 +1,27 @@
-.contact{
+.contact, .contact1{
     display: grid;
     grid-template-columns: 3rem auto;
     gap: 1rem;
     align-items: center;
     padding: 0 1.5rem;
     line-height: .3rem;
-    cursor: pointer;
     border-top: 1px solid #ccc;
 }
+
+.contact{
+    cursor: pointer;
+}
+
 @media (max-width: 1000px){
     .contact{
         padding: 0 1rem;
     }
 }
 
-.contact:last-of-type{
+.contact:last-of-type, .contact1:last-of-type{
     border-bottom: 1px solid #ccc;
 }
-.contact h5, .contact h3{
+.contact h5, .contact h3, .contact1 h5, .contact1 h3{
     margin: 0;
     height: 1rem;
 }
@@ -25,20 +29,24 @@
     background: #eef0f1;
 }
 
-.contact img{
+.contact img, .contact1 img{
     border-radius: 50%;
 }
 
 .contact h3,
-.contact p{
+.contact p,
+.contact1 h3,
+.contact1 p{
     color: black;
 }
 
-.contact h5{
+.contact h5,
+.contact1 h5{
     color: #494949;
 }
 
-.contact p{
+.contact p,
+.contact1 p{
     font-weight: 600;
 }
 

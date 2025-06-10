@@ -90,9 +90,40 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    overflow: hidden;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); */
     padding: 1px;
+}
+.contactsMenu{
+    background: white;
+}
+.menuFlutuante{
+    width: 1px;
+    position: relative;
+}
+.menuFlutuanteCaixa{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: white;
+    width: 300px;
+    height: fit-content;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4);
+}
+.menuFlutuanteCaixa div{
+    display: flex;
+    padding: 1rem;
+    font-size: 1.3rem;
+    gap: 1rem;
+    cursor: pointer;
+    align-items: center;
+}
+.menuFlutuanteCaixa div:hover{
+    background: rgba(26, 63, 228, 0.049);
+}
+.menuFlutuanteCaixa div p{
+    margin: 0;
 }
 .search svg{
     font-size: 1.5rem;

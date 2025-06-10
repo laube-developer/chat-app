@@ -8,7 +8,14 @@
 .title{
     display: flex;
     align-items: center;
-    height: 2.5rem;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.title h2{
+    margin: 0;
 }
 .container{
     padding: 1rem;
@@ -40,6 +47,8 @@
     height: 100%;
     border: none;
     background: rgba(204, 204, 204, 0.3);
+    padding: 0 !important;
+    color: black;
     border-radius: 10px;
     font-size: 1.3rem;
     cursor: pointer;

@@ -2,9 +2,9 @@ import styles from "../styles/Contact.module.css"
 
 import Image from "next/image"
 
-export default function Contact({name, description, hour, img_url, handleClick}){
-    return (<div className={styles.contact} onClick={handleClick}>
-        <Image src={img_url} alt="user image" width={40} height={40}/>
+export default function Contact({name, description, hour, imgUrl, handleClick, notHover}){
+    return (<div className={notHover ? styles.contact1 : styles.contact} onClick={handleClick}>
+        <Image src={imgUrl} alt="user image" width={40} height={40}/>
         <div className={styles.bottom}>
             <div>
                 <h3>{name}</h3>

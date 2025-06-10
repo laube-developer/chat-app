@@ -1,44 +1,53 @@
-import { useRouter } from "next/router"
 import styles from "../styles/AuthBar.module.css"
-import Cookies from "js-cookie"
-import { useContext, useEffect, useState } from "react"
-import { signOut } from "firebase/auth"
 
-import initializeFirebase from "../database/firebase"
-const app = initializeFirebase().app
-import { getAuth } from "firebase/auth"
-const auth = getAuth(app)
-
-import { LogoutButton, LoginButton, MinhasMensagens} from "./buttons"
-
-import MainContext from "../util/server/GlobalContext"
+import Link from "next/link"
+import LightButton from "./LightBackButton"
 import Image from "next/image"
 
-
 export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
-    const [user, setUser] = useState({})
+    //const user = {uid: "sdfsdf", img_url: "https://avatars.githubusercontent.com/u/59060532?v=4"}
+    const user = {}
 
-    useEffect(()=>{
-        let authUser = JSON.parse(Cookies.get("user") || "{}")
+    return (
+        <menu className="flex gap-2 w-max">
+            {user?.uid && (<>
+                <Image 
+                    width={20}
+                    height={20}
+                    src={user.img_url}
+                    alt="Rafael Laube"
+                    className="w-12 h-12  h-content rounded-full border-2 border-blue-500"
+                />
 
-        setUser(authUser)
+                <LightButton
+                    href="/chat"
+                    base={true}
+                    bg_linear
+                    simple_shadow_hover
+                >
+                    Minhas mensagens
+                </LightButton>
 
-        console.log(user)
-    }, [])
+                <LightButton
+                    href="/api/signout"
+                    base={true}
+                    border_simple
+                    simple_shadow_hover
+                >
+                    Sair
+                </LightButton>
+            </>)}
 
-    if(user?.uid) return (<div className={styles.main}>
-        <UserIcon img_src={user.photoURL}/>
-        <MinhasMensagens />
-        <LogoutButton lightBg={lightBg}/>
-    </div>)
-
-    else return (<div className={styles.main}>
-        <LoginButton lightBg={lightBg}/>
-    </div>)
-}
-
-function UserIcon({img_src}){
-    return(<div className={styles.user_img}>
-        <Image src={img_src} alt="user_icon" width={50} height={50} />
-    </div>)
+            {!(user?.uid) && (<>
+                <LightButton
+                    href="/signin"
+                    base={true}
+                    border_simple
+                    simple_shadow_hover
+                >
+                    Entrar
+                </LightButton>
+            </>)}
+        </menu>
+    )
 }

@@ -89,7 +89,7 @@ export default function Signin(){
                 <p>Digite o endereço de email para recuperar a sua senha. Será enviado um email para este endereço com as instruções para recuperação da senha.</p>
                 <p>Email selecionado: <span className={styles.blue_text}>{email}</span></p>
                 <div className={styles.bottom_box}>
-                  <h5><span className={styles.blue_text}><Link passHref="/signin">Entrar com email</Link></span></h5>
+                  <h5><span className={styles.blue_text}><Link href="/signin">Entrar com email</Link></span></h5>
                   <button className={styles.submit} onClick={recuperarSenha}>Enviar email</button>
                 </div>
               </>}

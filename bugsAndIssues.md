@@ -4,12 +4,17 @@
 
 [x] Aplicação trava ao carregar o isLoadding do contexto da aplicação ao utilizá-lo para renderizar o componente Loadding ou a página em questão
 
-[] Buscar contatos e finalizar mecanismo de salvar os contatos
-
 [x] Mecanismo de salvar usuário no firestore ao fazer login ou cadastrar
 
 [x] Problema do react-lottie resolvido com 
 > npm config set legacy-peer-deps true
 > npm i
 
-[] Verificar se já existe conversa entre dois usuários (realtimeDB.JS)
+[x] Verificar se já existe conversa entre dois usuários (realtimeDB.JS)
+
+[] Buscar contatos e finalizar mecanismo de salvar os contatos
+    [x] Conferir se um ref foi atualizado em tempo real (onValue)
+    [ ] Botão de adicionar contatos
+    
+[ ] Perfil do usuário 
+    [ ] Adicionar foto

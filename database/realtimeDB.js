@@ -1,6 +1,6 @@
 import initializeFirebase from "./firebase";
-import { child, equalTo, get, getDatabase, limitToFirst, orderByChild, query, ref, set, startAt } from "firebase/database";
-
+import {child, endAt, equalTo, get, getDatabase, limitToFirst, orderByChild, orderByValue, orderByKey, query, ref, set, startAt, push, update } from "firebase/database";
+import {and, where} from "firebase/firestore"
 const app = initializeFirebase().app
 
 const db = getDatabase(app)
@@ -14,79 +14,103 @@ function writeUserData(userId, name, email, imageUrl){
     })
 }
 
-function getUserData(email, callBack, errorFunction){
+function getUserData({email, uid}){
+    if(!(email || uid)) return false
+    
     const userRef = ref(db, `users`)
 
-    get(query(userRef, orderByChild(`email`), equalTo(email), limitToFirst(10)))
-    .then((snapshot) => {
-        if(snapshot.hasChild){
-            let uid = Object.keys(snapshot.toJSON())[0]
+    if(email && !uid){
+        return get(query(userRef, orderByChild(`email`), equalTo(email), limitToFirst(10)))
+    }
 
-            let user = {
-                ...snapshot.val()[uid], 
-                uid: uid,
-            }
-            callBack(user)
+    if(uid && !email){
+        return get(query(userRef, orderByKey(), equalTo(uid)))
+    }
 
-        } else {
-            errorFunction("Usuário não encontrado")
-        }
-    })
-    .catch((err)=>{
-        errorFunction(err)
+    
+}
+
+function getUsersData({usersUidArray, callBack, errorFunction}){
+    const usersRef = ref(db, "users")
+
+    let usersList = Array(usersUidArray).map(id=>{
+        return get(query(usersRef, orderByKey(), equalTo(usersUidArray(id))))
     })
 }
 
-function createChat(uid1, uid2,){
-    let lastIdRef = ref(db, `chats/lastId`)
+async function createChat(firstUid, newContactUid){
+    //verificar se já não existe uma conversa cadastrada
+    const snapshot1 = await get(query(ref(db, `chats`), orderByChild("members"), equalTo(firstUid)))
+    
+    if(!snapshot1.exists) return false
+    
+    console.log(snapshot1.val())
 
-    get(query(lastIdRef))
-    .then((snapshot)=>{
-        if(snapshot.exists){
-            let lastId = snapshot.val()
+    if(snapshot1.val() != null) {
+        console.log("Contato já adicionado")
+        return
+    }
 
-            //Create chat in "chats/list/<newId>"
-            const members = {}
-            members[uid1] = true
-            members[uid2] = true
 
-            set(ref(db, `chats/list/${lastId + 1}`), {members: members})
+    //adicionar a nova conversa em /chats e em /users em cada contato
+    let chatsRef = ref(db, "chats")
 
-            //Create chat in "users/<uid1>/chats/<newId>"
-            set(ref(db, `users/${uid1}/chats/${lastId + 1}`), true)
+    let newChat = {}
+    newChat.members = {}
+    newChat.members[firstUid] = true
+    newChat.members[newContactUid] = true
 
-            //Create chat in "users/<uid2>/chats/<newId>"
-            set(ref(db, `users/${uid2}/chats/${lastId + 1}`), true)
+    let snapshot2 = await push(chatsRef, newChat)
 
-            //update last id
-            set(ref(db, `chats/lastId`), lastId + 1)
+    if(!snapshot2.key) return
 
-            return
-        }
+    let chatKey = snapshot2.key
 
-        errorFunction("Dado não encontrado")
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+    //salvar a conversa em "/users/<firstUid>/chats"
+
+    let firstUserChatsRef = ref(db, `users/${firstUid}/chats/${chatKey}`)
+    let snapshot3 = await set(firstUserChatsRef, true)
+    
+    //salvar a conversa em "/users/<secondUid>/chats"
+    let secondUserChatsRef = ref(db, `users/${newContactUid}/chats/${chatKey}`)
+    let snapshot4 = await set(secondUserChatsRef, true)
 }
 
-function getChats(uid, callback){
+function getChat(chatId){
+    if(!chatId) return
     const db = getDatabase(app)
 
-    get(query(ref(db, `users/${uid}/chats`)))
-    .then((snapshot)=>{
-        if(snapshot.exists){
-            let chatslist = snapshot.val()
+    return get(query(ref(db, `chats/${chatId}`)))
+}
 
-            callback(chatslist)
-        }
-    })
+function getMessages(chatId){
+    const messagesListRef = ref(db, `messages/${chatId}`)
+
+    return get(query(messagesListRef))
+}
+
+async function sendMessageData(chatId, text, author, timestamp){
+    if(!chatId || !text || !author || !timestamp ) return
+    const chatRef = ref(db, `messages/${chatId}/list`)
+    const lastMessageRef = ref(db, `messages/${chatId}/lastMessage`)
+
+    const newMessage = {
+        author,
+        text,
+        timestamp
+    }
+    
+    push(chatRef, newMessage)
+
+    update(ref(db, `messages/${chatId}/lastMessage`), newMessage)
 }
 
 export {
     writeUserData,
     getUserData,
+    getUsersData,
     createChat,
-    getChats
+    getChat,
+    getMessages,
+    sendMessageData
 }

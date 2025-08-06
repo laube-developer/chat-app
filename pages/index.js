@@ -9,8 +9,9 @@ import LightButton from "../components/LightBackButton";
 import { useEffect, useState } from "react";
 
 import { IoSendSharp } from "react-icons/io5";
-import { FaRegSmileWink } from "react-icons/fa";
+import { FaRegSmileWink, FaGithub } from "react-icons/fa";
 import { FiPaperclip } from "react-icons/fi";
+
 
 const inter200 = Inter({
     subsets: ["latin"],
@@ -89,7 +90,7 @@ export default function Index(){
 
         <section className="flex flex-row max-w-[1100px] mx-auto gap-4 items-center">
             <div className={inter200.className + " flex flex-col gap-4"}>
-                <h1 className="text-6xl font-bold text-blue-600">Conversas em tempo real</h1>
+                <h1 className="text-5xl font-bold text-blue-600">Conversas em tempo real</h1>
                 <ul className="text-xl">
                     <li>Compartilhe suas ideias com seus amigos ou familiares em tempo real para qualquer lugar do globo</li>
                 </ul>
@@ -99,53 +100,57 @@ export default function Index(){
         </section>
 
         <section className="max-w-[1100px] mx-auto mt-10">
-            <h1 className={inter200.className + " text-6xl font-bold text-blue-600"}>Sobre o projeto</h1>
+            <h1 className={inter200.className + " text-5xl font-bold text-blue-600"}>Sobre o projeto</h1>
             
             <div className="flex flex-col pt-10  gap-4">
                 <div className="grid grid-cols-3 gap-4">
                     
-                    <div className="flex flex-col bg-slate-200 rounded-t-xl items-start gap-4 min-h-[600px] overflow-hidden">
+                    <div className="flex flex-col rounded-t-xl items-start gap-4 min-h-[600px] overflow-hidden">
                         <div className="relative flex w-full">
                             <Image width={200} height={200} src="/img/project.jpg" alt="project" className="w-full"/>
                         </div>
                             
                         <h3 className="text-3xl mx-4 text-blue-500 font-semibold z-10">Projeto</h3>
 
-                        <div className="text-xl text-justify mx-4">
+                        <div className="text-xl text-justify mx-4 font-light">
                             <p>Este é um projeto desenvolvido com  Next.js e Firebase e tem por objetivo aplicar conhecimentos de desenvolvimento de software, bem como registrar portifólio pessoal.</p>
                         </div>
                     </div>
 
-                    <div className="flex flex-col bg-slate-200 rounded-t-xl items-start gap-4 min-h-[500px] overflow-hidden">
+                    <div className="flex flex-col rounded-t-xl items-start gap-4 min-h-[500px] overflow-hidden">
                         <div className="relative flex w-full">
                             <Image width={200} height={200} src="/img/repository.jpg" alt="project" className="w-full"/>
                         </div>
                             
                         <h3 className="text-3xl mx-4 text-blue-500 font-semibold z-10">Repositório</h3>
 
-                        <div className="text-xl text-justify mx-4">
+                        <div className="text-xl text-justify mx-4 font-light">
                             <p>O repositório pode ser encontrado no link a seguir. <br/>O código pode ser estudado, para quem  busca conhecer um pouco mais sobre os frameworks utilizados.</p>
                         </div>
 
-                        <div className="flex flex-row w-full gap-2 justify-center">
+                        <div className="flex flex-row w-full gap-2 justify-center px-4">
                             <LightButton
                                 href="https://github.com/laube-developer"
                                 bg_linear
                                 linear_shadow_hover
-                                className="text-sm"
-                            >github.com/laube-developer</LightButton>
+                                className="text-sm w-full align flex justify-center"
+                            >
+                                <FaGithub />
+                                github.com/laube-developer
+                                </LightButton>
 
                         </div>
                     </div>
 
-                    <div className="flex flex-col bg-slate-200 rounded-t-xl items-start gap-4 min-h-[500px] overflow-hidden">
+                    <div className="flex flex-col rounded-t-xl items-start gap-4 min-h-[500px] overflow-hidden">
                         <div className="relative flex w-full">
                             <Image width={200} height={200} src="/img/autor.jpeg" alt="Rafael Laube" className="w-full"/>
                         </div>
                             
                         <h3 className="text-3xl mx-4 text-blue-500 font-semibold z-10">Autor</h3>
 
-                        <div className="text-xl text-justify mx-4">
+                        <div className="text-xl text-justify mx-4 font-light">
+                            <b>Rafael Laube</b>
                             <p>Estudante de Engenharia de Software na Universidade de Brasília</p>
                         </div>
                     </div>

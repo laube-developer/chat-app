@@ -1,12 +1,26 @@
+"use server"
 import styles from "../styles/AuthBar.module.css"
 
 import Link from "next/link"
 import LightButton from "./LightBackButton"
 import Image from "next/image"
+import { cookies } from "next/headers"
+import { signOut } from "firebase/auth"
 
 export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
-    //const user = {uid: "sdfsdf", img_url: "https://avatars.githubusercontent.com/u/59060532?v=4"}
-    const user = {}
+    const user = {uid: "sdfsdf", img_url: "https://avatars.githubusercontent.com/u/59060532?v=4"}
+    //const user = {}
+
+    const sair = async () => {
+        const url = "api/signout"
+
+        (await cookies()).delete("user")
+
+        const result = await signOut()
+
+        console.log(result)
+
+    }
 
     return (
         <menu className="flex gap-2 w-max">
@@ -29,8 +43,8 @@ export default function AuthBar({lightBg, preventAutoRedirect, setLoading}){
                 </LightButton>
 
                 <LightButton
-                    href="/api/signout"
                     base={true}
+                    handleClick={sair}
                     border_simple
                     simple_shadow_hover
                 >

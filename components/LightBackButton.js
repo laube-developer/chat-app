@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-export default function LightButton({children, href, linear_shadow_hover, simple_shadow_hover, border_linear, border_simple, bg_simple, bg_linear, className}){
+export default function LightButton({children, href, linear_shadow_hover, simple_shadow_hover, border_linear, border_simple, bg_simple, bg_linear,handleClick, className}){
     return (
         <Link
-            href={href}
+            href={href || ""}
             className={`min-h-12 relative p-[2px] rounded-full ${!border_simple || bg_simple ? "bg-blue-500" : ""} ${border_linear || bg_linear ? "bg-linear-30 from-blue-500 to-purple-600" : ""} cursor-pointer ease-in-out group ${className}`}
+            onClick={handleClick}
         >
             {simple_shadow_hover && <div className="absolute top-0 left-0 w-full h-full bg-blue-500 opacity-75 rounded-full z-[-1] group-hover:opacity-100 group-hover:blur-md duration-500 ease-out">
             </div>}

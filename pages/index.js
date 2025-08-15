@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Header from "../components/Header";
 
-//fonts
-import { Inter } from "next/font/google"
+
 import Image from "next/image";
 import Link from "next/link";
 import LightButton from "../components/LightBackButton";
@@ -11,11 +10,6 @@ import { useEffect, useState } from "react";
 import { IoSendSharp } from "react-icons/io5";
 import { FaRegSmileWink } from "react-icons/fa";
 import { FiPaperclip } from "react-icons/fi";
-
-const inter200 = Inter({
-    subsets: ["latin"],
-    weight: ["200", "600"]
-})
 
 export default function Index(){
     const [message, setMessage] = useState("")
@@ -56,7 +50,8 @@ export default function Index(){
 
         <section className="flex flex-row max-w-[1100px] mx-auto gap-4 items-center">
             <Image width={640} height={556} src="/img/index1.png" alt={"Chat app mockup"}/>
-            <div className={inter200.className + " flex flex-col gap-8 relative"}>
+            <div className={"flex flex-col gap-8 relative"}>{/* Fonte inter */}
+                
                 <h1 className="text-6xl font-bold text-transparent">Seu novo mensageiro está aqui</h1>
                 <h1 className="absolute text-6xl font-bold text-blue-600">{message}</h1>
                 <ul className="text-xl">
@@ -88,7 +83,7 @@ export default function Index(){
         </section>
 
         <section className="flex flex-row max-w-[1100px] mx-auto gap-4 items-center">
-            <div className={inter200.className + " flex flex-col gap-4"}>
+            <div className={"flex flex-col gap-4"}>
                 <h1 className="text-6xl font-bold text-blue-600">Conversas em tempo real</h1>
                 <ul className="text-xl">
                     <li>Compartilhe suas ideias com seus amigos ou familiares em tempo real para qualquer lugar do globo</li>
@@ -99,7 +94,7 @@ export default function Index(){
         </section>
 
         <section className="max-w-[1100px] mx-auto mt-10">
-            <h1 className={inter200.className + " text-6xl font-bold text-blue-600"}>Sobre o projeto</h1>
+            <h1 className={"text-6xl font-bold text-blue-600"}>Sobre o projeto</h1>
             
             <div className="flex flex-col pt-10  gap-4">
                 <div className="grid grid-cols-3 gap-4">

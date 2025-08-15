@@ -1,6 +1,4 @@
-import styles from "../styles/AuthBar.module.css"
 
-import Link from "next/link"
 import LightButton from "./LightBackButton"
 import Image from "next/image"
 
